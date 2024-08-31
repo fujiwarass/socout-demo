@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { Header } from "../_component/mainLayout/Header";
+import { Box } from "@mui/material";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,8 +18,18 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <div>title</div>
-        {children}
+      <Box sx={{ display: 'flex' }}>
+        <Header /> 
+        <Box
+          component="main"
+          sx={{ flexGrow: 1
+               , p: 3
+               , marginTop: '64px'
+               , transition: 'width 0.3s ease, margin-left 0.3s ease'
+              }}>
+          {children}
+        </Box>
+      </Box>
         </body>
     </html>
   );
