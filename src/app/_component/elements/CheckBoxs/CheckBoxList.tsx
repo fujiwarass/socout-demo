@@ -22,8 +22,8 @@ export function CheckBoxList({ position, label }: CheckBoxListProps) {
             <FormControl>
                 <FormLabel>{label}</FormLabel>
                 <FormGroup row>
-                    {position.map((pos) => (
-                        <FormControlLabel value={pos} control={<Checkbox />} label={pos} />
+                    {position.map((pos,index) => (
+                        <FormControlLabel key={index} value={pos} control={<Checkbox />} label={pos} />
                     ))}
                 </FormGroup>
             </FormControl>

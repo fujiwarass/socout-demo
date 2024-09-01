@@ -22,8 +22,8 @@ export function LadioBoxList({ position, label }: LadioBoxListProps) {
             <FormControl>
                 <FormLabel>{label}</FormLabel>
                 <RadioGroup row defaultValue="">
-                    {position.map((pos) => (
-                        <FormControlLabel value={pos} control={<Radio />} label={pos} />
+                    {position.map((pos,index) => (
+                        <FormControlLabel key={index} value={pos} control={<Radio />} label={pos} />
                     ))}
                 </RadioGroup>
             </FormControl>
