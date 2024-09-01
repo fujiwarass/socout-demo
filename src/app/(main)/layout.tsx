@@ -22,8 +22,9 @@ export default function RootLayout({
         <Header /> 
         <Box
           component="main"
-          sx={{ flexGrow: 1
-               , p: 3
+          sx={{ 
+                flexGrow: 1
+               ,p: 3
                , marginTop: '64px'
                , transition: 'width 0.3s ease, margin-left 0.3s ease'
               }}>
