@@ -3,9 +3,17 @@ import { useRef, useState } from "react";
 
 
 /**
+ * 動画をアップロードするフィールドのプロップス
+ */
+interface UploadMovieFeildProps {
+    /**ボタン名 */
+    buttonName: string
+}
+
+/**
  * 動画をアップロードするフィールド
  */
-export function UploadMovieFeild() {
+export function UploadMovieFeild({ buttonName }: UploadMovieFeildProps) {
     const width = 250;
     //1,Refを作成
     const videoInputRef = useRef<HTMLInputElement>(null);
@@ -34,6 +42,7 @@ export function UploadMovieFeild() {
     // 動画の再生、停止を管理するためのstateを作成
     const [isPlaying, setIsPlaying] = useState(false);
 
+    // 再生、停止ボタンが押された時の処理
     const handlePlay = () => {
         if(isPlaying){
             videoRef.current?.pause();
@@ -64,7 +73,7 @@ export function UploadMovieFeild() {
                 </Box>
 
                 <Button variant="contained" onClick={handleButtonClick} sx={{ width: width }}>
-                    動画アップロード
+                    {buttonName}
                 </Button>
                 <TextField
                     type="file"

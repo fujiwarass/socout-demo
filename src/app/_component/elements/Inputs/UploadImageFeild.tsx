@@ -2,11 +2,18 @@ import { Box, Button, TextField } from "@mui/material";
 import Image from "next/image";
 import { useRef, useState } from "react";
 
+/**
+ * 画像をアップロードするフィールドのプロップス
+ */
+interface UploadImageFeildProps {
+    /**ボタン名 */
+    buttonName: string
+}
 
 /**
- * 動画をアップロードするフィールド
+ * 画像をアップロードするフィールド
  */
-export function UploadImageFeild() {
+export function UploadImageFeild({ buttonName }: UploadImageFeildProps) {
     //1,Refを作成
     const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -45,7 +52,7 @@ export function UploadImageFeild() {
                     style={{ display:  imageSrc === "" ? "none" : "block",border: '1px solid skyblue', }}
                 />
                 <Button variant="contained" onClick={handleButtonClick} sx={{width: '250px'}}>
-                    画像アップロード
+                    {buttonName}
                 </Button>
                 <TextField
                     type="file"
