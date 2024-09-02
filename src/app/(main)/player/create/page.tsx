@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Button, Box, TextField, Stack, FormGroup, Checkbox, FormControlLabel, FormControl, FormLabel } from '@mui/material';
+import { Button, Box, Stack } from '@mui/material';
 import { FormHeadLine } from '@/app/_component/elements/HeadLines/FormHeadLine';
 import { StringField } from '@/app/_component/elements/Inputs/StringField';
 import { DateField } from '@/app/_component/elements/Inputs/DateField';
@@ -9,10 +9,12 @@ import { StringAreaField } from '@/app/_component/elements/Inputs/StringAreaFiel
 import { CheckBoxList } from '@/app/_component/elements/CheckBoxs/CheckBoxList';
 import { NumberField } from '@/app/_component/elements/Inputs/NumberFeild';
 import { LadioBoxList } from '@/app/_component/elements/LadioButtons/LadioButtonList';
+import { UploadImageFeild } from '@/app/_component/elements/Inputs/UploadImageFeild';
+import { UploadMovieFeild } from '@/app/_component/elements/Inputs/UploadMovieField';
 
 export default function Page() {
 
-    return (    
+    return (
         <>
             <Box sx={{
                 display: 'flex',
@@ -38,11 +40,13 @@ export default function Page() {
                 {/* 個人情報 */}
                 <Stack direction="column" spacing={4}>
                     <FormHeadLine title="個人情報" />
+                    <UploadImageFeild buttonName='選手プロフィール画像アップロード' />
                     <Stack direction="row" spacing={2}>
                         <StringField label="姓" example="例：山田" />
                         <StringField label="名" example="例：太郎" />
                     </Stack>
                     <DateField label="生年月日" />
+
                 </Stack>
                 {/* 経歴 */}
                 <Stack direction="column" spacing={4}>
@@ -55,6 +59,7 @@ export default function Page() {
                 {/* 選手情報 */}
                 <Stack direction="column" spacing={4}>
                     <FormHeadLine title="選手情報" />
+                    <UploadMovieFeild buttonName='プレイ動画アップロード' />
                     <CheckBoxList label='ポジション(複数選択可)' position={[...['GK', 'DF', 'MF', 'FW']]} />
                     <Stack direction="row" spacing={2}>
                         <NumberField label="身長" example="999.9" unit='cm' />
