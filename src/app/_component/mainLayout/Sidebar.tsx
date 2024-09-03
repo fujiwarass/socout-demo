@@ -37,7 +37,7 @@ export function SideBar(
   return (
     <Box
         component="nav"
-        sx={{ width: { sm: open ? drawerWidth : 0 }, 
+        sx={{ width: open ? drawerWidth : 0 , 
         flexShrink: { sm: 0 } }}
         aria-label="mailbox folders"
       >
