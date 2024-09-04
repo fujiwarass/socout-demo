@@ -1,5 +1,5 @@
 import { InputAdornment, TextField } from "@mui/material";
-
+import { NumericFormat } from "react-number-format"
 /**
  * 文字を入力するテキストボックスのプロップス
  */
@@ -19,27 +19,27 @@ interface NumberFieldProps {
  * @param unit 単位
  */
 export function NumberField(
-    { label, example,unit }: NumberFieldProps
+    { label, example, unit }: NumberFieldProps
 ) {
     const wrapLabel = <div style={{fontSize: '24px'}}>{label}</div>;
     return (
         <>
-            <TextField
-                    type='number'
-                    label={wrapLabel}
-                    fullWidth
-                    margin="normal"
-                    slotProps={{ 
-                        inputLabel: { shrink: true } ,
-                        input: {
-                            endAdornment: <InputAdornment position="end">{unit}</InputAdornment>,
-                            inputProps: {
-                                step: 0.1,  // step属性を追加
-                            },
-                        },
-                    }}
-                    placeholder={example}
-                />
+            <NumericFormat 
+                decimalScale={1} // 小数点以下の桁数
+                decimalSeparator="." // 小数点の文字
+                fixedDecimalScale // 小数点以下の桁数を固定
+                allowNegative={false} // マイナス値の入力を許可
+                customInput={TextField} // テキストフィールドを指定
+                label={wrapLabel} // ラベル名
+                slotProps={{
+                     inputLabel: { shrink: true },
+                     input: {   
+                        endAdornment: <InputAdornment position="end">{unit}</InputAdornment>,
+                     },
+                }} // ラベルの設定
+                placeholder={example} // 入力例
+                
+            />
         </>
     );
 }
