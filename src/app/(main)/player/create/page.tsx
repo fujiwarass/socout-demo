@@ -11,6 +11,7 @@ import { NumberField } from '@/app/_component/elements/Inputs/NumberFeild';
 import { LadioBoxList } from '@/app/_component/elements/LadioButtons/LadioButtonList';
 import { UploadImageFeild } from '@/app/_component/elements/Inputs/UploadImageFeild';
 import { UploadMovieFeild } from '@/app/_component/elements/Inputs/UploadMovieField';
+import { FormatField } from '@/app/_component/elements/Inputs/FormatField';
 
 export default function Page() {
 
@@ -65,7 +66,7 @@ export default function Page() {
                     </Stack>
                     <LadioBoxList label='利き足' position={[...['右足', '左足', '両足']]} />
                     <StringAreaField label="自己PR" example="" />
-                    <StringField label="所属チーム監督連絡先" example="XXX-XXXX-XXXX" />
+                    <FormatField label="所属チーム監督連絡先" example="XXX-XXXX-XXXX" format="###-####-####" />
                 </Stack>
                 <Stack direction="column" spacing={4}>
                     <FormHeadLine title="その他情報" />
