@@ -9,10 +9,9 @@ import { StringAreaField } from '@/app/_component/elements/Inputs/StringAreaFiel
 import { CheckBoxList } from '@/app/_component/elements/CheckBoxs/CheckBoxList';
 import { NumberField } from '@/app/_component/elements/Inputs/NumberFeild';
 import { LadioBoxList } from '@/app/_component/elements/LadioButtons/LadioButtonList';
-import { UploadImageFeild } from '@/app/_component/elements/Inputs/UploadImageFeild';
-import { UploadMovieFeild } from '@/app/_component/elements/Inputs/UploadMovieField';
 import { FormatField } from '@/app/_component/elements/Inputs/FormatField';
 import { FormChip } from '@/app/_component/elements/Chips/FormChip';
+import * as Player from '@/feature/player/components/Index';
 
 export default function Page() {
 
@@ -40,56 +39,13 @@ export default function Page() {
             }}>
 
                 {/* 個人情報 */}
-                <Stack direction="column" spacing={4}>
-                    <FormHeadLine title="個人情報" />
-                    <FormChip mustFlg={true} />
-                    <Stack direction="row" spacing={2}>
-                        <StringField label="姓" example="例：山田" />
-                        <StringField label="名" example="例：太郎" />
-                    </Stack>
-                    <FormChip mustFlg={true} />
-                    <DateField label="生年月日" />
-
-                </Stack>
+                <Player.PersonalInfoArea />
                 {/* 経歴 */}
-                <Stack direction="column" spacing={4}>
-                    <FormChip mustFlg={true} />
-                    <FormHeadLine title="経歴" />
-                    <FormChip mustFlg={true} />
-                    <StringField label="現所属チーム" example="例：～所属" />
-                    <FormChip mustFlg={true} />
-                    <StringAreaField label="過去所属チーム" example="例： XXXX年YY月~XXXX年YY月 ～所属" />
-                    <FormChip mustFlg={true} />
-                    <StringAreaField label="選抜歴" example="例： XXXX年YY月~XXXX年YY月 ～選抜選出" />
-
-                </Stack>
+                <Player.BackgroundArea />
                 {/* 選手情報 */}
-                <Stack direction="column" spacing={4}>
-                    <FormChip mustFlg={true} />
-                    <FormHeadLine title="選手情報" />
-                    <FormChip mustFlg={true} />
-                    <CheckBoxList label='ポジション(複数選択可)' position={[...['GK', 'DF', 'MF', 'FW']]} />
-                    <FormChip mustFlg={true} />
-                    <Stack direction="row" spacing={2}>
-                        <NumberField label="身長" example="999.9" unit='cm' />
-                        <NumberField label="体重" example="999.9" unit='kg' />
-                    </Stack>
-                    <FormChip mustFlg={true} />
-                    <LadioBoxList label='利き足' position={[...['右足', '左足', '両足']]} />
-                    <FormChip mustFlg={true} />
-                    <StringAreaField label="自己PR" example="" />
-                    <FormChip mustFlg={true} />
-                    <FormatField label="所属チーム監督連絡先" example="XXX-XXXX-XXXX" format="###-####-####" />
-                </Stack>
-                <Stack direction="column" spacing={4}>
-                    <FormHeadLine title="その他情報" />
-                    <FormChip mustFlg={false} />
-                    <NumberField label="父親の身長" example="999.9" unit='cm' />
-                    <FormChip mustFlg={false} />
-                    <NumberField label="母親の身長" example="999.9" unit='cm' />
-                    <FormChip mustFlg={false} />
-                    <NumberField label="50m走" example="99.9" unit='秒' />
-                </Stack>
+                <Player.PlayerInfoArea />
+                {/* その他情報 */}
+                <Player.OtherArea />
                 <Button type="submit" variant="contained" color="primary" sx={{ alignSelf: 'flex-end' }}>
                     確認画面へ
                 </Button>
