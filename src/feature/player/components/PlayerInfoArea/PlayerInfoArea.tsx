@@ -12,21 +12,25 @@ export function PlayerInfoArea() {
     return (
         <>
             <Stack direction="column" spacing={4}>
-                    <FormChip mustFlg={true} />
                     <FormHeadLine title="選手情報" />
+
                     <FormChip mustFlg={true} />
-                    <CheckBoxList label='ポジション(複数選択可)' position={[...['GK', 'DF', 'MF', 'FW']]} />
+                    <CheckBoxList name={"position"} label='ポジション(複数選択可)' position={[...['GK', 'DF', 'MF', 'FW']]} />
+
                     <FormChip mustFlg={true} />
                     <Stack direction="row" spacing={2}>
-                        <NumberField label="身長" example="999.9" unit='cm' />
-                        <NumberField label="体重" example="999.9" unit='kg' />
+                        <NumberField name={"height"} label="身長" example="999.9" unit='cm' />
+                        <NumberField name={"weight"} label="体重" example="999.9" unit='kg' />
                     </Stack>
+
                     <FormChip mustFlg={true} />
-                    <LadioBoxList label='利き足' position={[...['右足', '左足', '両足']]} />
+                    <LadioBoxList name={"dominantFoot"} label='利き足' position={[...['右足', '左足', '両足']]} />
+                    
                     <FormChip mustFlg={true} />
-                    <StringAreaField label="自己PR" example="" />
+                    <StringAreaField  name={"selfPR"} label="自己PR" example="" />
+                    
                     <FormChip mustFlg={true} />
-                    <FormatField label="所属チーム監督連絡先" example="XXX-XXXX-XXXX" format="###-####-####" />
+                    <FormatField name={"teamContact"} label="所属チーム監督連絡先" example="XXX-XXXX-XXXX" format="###-####-####" />
             </Stack>
         </>
     );

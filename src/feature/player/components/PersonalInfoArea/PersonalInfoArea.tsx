@@ -12,12 +12,11 @@ export function PersonalInfoArea() {
                 <FormHeadLine title="個人情報" />
                 <FormChip mustFlg={true} />
                 <Stack direction="row" spacing={2}>
-                    <StringField label="姓" example="例：山田" />
-                    <StringField label="名" example="例：太郎" />
+                    <StringField name={"firstName"} label="姓" example="例：山田" />
+                    <StringField name={"lastName"}  label="名" example="例：太郎" />
                 </Stack>
                 <FormChip mustFlg={true} />
-                <DateField label="生年月日" />
-
+                <DateField name={"birthDay"}  label="生年月日" />
             </Stack>
         </>
     );

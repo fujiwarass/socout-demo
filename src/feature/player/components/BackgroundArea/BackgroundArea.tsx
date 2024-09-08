@@ -9,14 +9,17 @@ export function BackgroundArea() {
     return (
         <>
             <Stack direction="column" spacing={4}>
-                    <FormChip mustFlg={true} />
+
                     <FormHeadLine title="経歴" />
+
                     <FormChip mustFlg={true} />
-                    <StringField label="現所属チーム" example="例：～所属" />
+                    <StringField name={"team"} label="現所属チーム" example="例：～所属" />
+
                     <FormChip mustFlg={true} />
-                    <StringAreaField label="過去所属チーム" example="例： XXXX年YY月~XXXX年YY月 ～所属" />
+                    <StringAreaField name={"pastTeam"}  label="過去所属チーム" example="例： XXXX年YY月~XXXX年YY月 ～所属" />
+
                     <FormChip mustFlg={true} />
-                    <StringAreaField label="選抜歴" example="例： XXXX年YY月~XXXX年YY月 ～選抜選出" />
+                    <StringAreaField name={"selectionHistory"}  label="選抜歴" example="例： XXXX年YY月~XXXX年YY月 ～選抜選出" />
             </Stack>
         </>
     );

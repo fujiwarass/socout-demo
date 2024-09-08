@@ -9,12 +9,15 @@ export function OtherArea() {
         <>
             <Stack direction="column" spacing={4}>
                 <FormHeadLine title="その他情報" />
+
                 <FormChip mustFlg={false} />
-                <NumberField label="父親の身長" example="999.9" unit='cm' />
+                <NumberField name={"fatherHeight"} label="父親の身長" example="999.9" unit='cm' />
+
                 <FormChip mustFlg={false} />
-                <NumberField label="母親の身長" example="999.9" unit='cm' />
+                <NumberField name={"motherHeight"} label="母親の身長" example="999.9" unit='cm' />
+                
                 <FormChip mustFlg={false} />
-                <NumberField label="50m走" example="99.9" unit='秒' />
+                <NumberField name={"run50m"} label="50m走" example="99.9" unit='秒' />
             </Stack>
         </>
     );
