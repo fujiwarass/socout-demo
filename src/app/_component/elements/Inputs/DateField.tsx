@@ -1,28 +1,42 @@
 import { TextField } from "@mui/material";
+import { Controller, useFormContext } from "react-hook-form";
 
 /**
  * 日付を入力するテキストボックスのプロップス
  */
 interface DateFieldProps {
+    /**name属性 */
+    name: string,
     /**ラベル名 */
     label: string,
 }
 
 /**
  * 日付を入力するテキストボックス
+ * @param name name属性
  * @param label ラベル名
  */
 export function DateField(
-    { label }: DateFieldProps
+    { name, label }: DateFieldProps
 ) {
-    const wrapLabel = <div style={{fontSize: '24px'}}>{label}</div>;
+    const { control } = useFormContext();
+    const wrapLabel = <div style={{ fontSize: '24px' }}>{label}</div>;
     return (
         <>
-            <TextField label={wrapLabel}
-                type='date'
-                margin="normal"
-                slotProps={{ inputLabel: { shrink: true } }} >
-            </TextField>
+            <Controller
+                name={name}
+                control={control}
+                render={({ field }) => (
+                    <TextField
+                        {...field}
+                        label={wrapLabel}
+                        type='date'
+                        margin="normal"
+                        slotProps={{ inputLabel: { shrink: true } }} >
+                    </TextField>
+                )}
+            >
+            </Controller>
         </>
     );
 }

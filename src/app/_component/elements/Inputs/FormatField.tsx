@@ -1,9 +1,12 @@
 import { InputAdornment, TextField } from "@mui/material";
+import { Controller, useFormContext } from "react-hook-form";
 import { NumericFormat, PatternFormat } from "react-number-format"
 /**
- * 文字を入力するテキストボックスのプロップス
+ * 数値を入力するテキストボックス
  */
 interface FormatFieldProps {
+    /**name属性 */
+    name: string,
     /**ラベル名 */
     label: string,
     /**入力例 */
@@ -19,19 +22,28 @@ interface FormatFieldProps {
  * @param format フォーマット(#でパターン文字を定義)
  */
 export function FormatField(
-    { label, example, format }: FormatFieldProps
+    { name, label, example, format }: FormatFieldProps
 ) {
-    const wrapLabel = <div style={{fontSize: '24px'}}>{label}</div>;
+    const { control } = useFormContext();
+    const wrapLabel = <div style={{ fontSize: '24px' }}>{label}</div>;
     return (
         <>
-            <PatternFormat 
-                format={format} // パターン
-                customInput={TextField} // テキストフィールドを指定
-                label={wrapLabel} // ラベル名
-                slotProps={{ inputLabel: { shrink: true },}} // ラベルの設定
-                placeholder={example} // 入力例
-                
-            />
+            <Controller
+                name={name}
+                control={control}
+                render={({ field }) => (
+                    <PatternFormat
+                        {...field} // フィールド
+                        format={format} // パターン
+                        customInput={TextField} // テキストフィールドを指定
+                        label={wrapLabel} // ラベル名
+                        slotProps={{ inputLabel: { shrink: true }, }} // ラベルの設定
+                        placeholder={example} // 入力例
+
+                    />
+                )}
+            ></Controller>
+
         </>
     );
 }
