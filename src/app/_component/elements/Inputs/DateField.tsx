@@ -19,7 +19,8 @@ interface DateFieldProps {
 export function DateField(
     { name, label }: DateFieldProps
 ) {
-    const { control } = useFormContext();
+    const { control, formState:{errors} } = useFormContext();
+    const errorMessage = errors[name]?.message as string | undefined;
     const wrapLabel = <div style={{ fontSize: '24px' }}>{label}</div>;
     return (
         <>
@@ -32,7 +33,10 @@ export function DateField(
                         label={wrapLabel}
                         type='date'
                         margin="normal"
-                        slotProps={{ inputLabel: { shrink: true } }} >
+                        slotProps={{ inputLabel: { shrink: true } }} 
+                        error={!!errorMessage}
+                        helperText={errorMessage}
+                        >
                     </TextField>
                 )}
             >

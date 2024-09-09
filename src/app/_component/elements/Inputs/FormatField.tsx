@@ -24,7 +24,8 @@ interface FormatFieldProps {
 export function FormatField(
     { name, label, example, format }: FormatFieldProps
 ) {
-    const { control } = useFormContext();
+    const { control, formState:{errors} } = useFormContext();
+    const errorMessage = errors[name]?.message as string | undefined;
     const wrapLabel = <div style={{ fontSize: '24px' }}>{label}</div>;
     return (
         <>
@@ -39,7 +40,8 @@ export function FormatField(
                         label={wrapLabel} // ラベル名
                         slotProps={{ inputLabel: { shrink: true }, }} // ラベルの設定
                         placeholder={example} // 入力例
-
+                        error={!!errorMessage}
+                        helperText={errorMessage}
                     />
                 )}
             ></Controller>

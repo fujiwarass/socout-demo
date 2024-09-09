@@ -22,7 +22,8 @@ interface StringAreaFieldProps {
 export function StringAreaField(
     { name, label, example }: StringAreaFieldProps
 ) {
-    const { control } = useFormContext();
+    const { control, formState:{errors} } = useFormContext();
+    const errorMessage = errors[name]?.message as string | undefined;
     const wrapLabel = <div style={{ fontSize: '24px' }}>{label}</div>;
     return (
         <>
@@ -38,6 +39,8 @@ export function StringAreaField(
                         slotProps={{ inputLabel: { shrink: true } }}
                         placeholder={example}
                         rows={5}
+                        error={!!errorMessage}
+                        helperText={errorMessage}
                     />
                 )} >
 

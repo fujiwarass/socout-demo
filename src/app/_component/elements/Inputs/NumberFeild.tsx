@@ -25,7 +25,8 @@ interface NumberFieldProps {
 export function NumberField(
     { name, label, example, unit }: NumberFieldProps
 ) {
-    const { control } = useFormContext();
+    const { control, formState:{errors} } = useFormContext();
+    const errorMessage = errors[name]?.message as string | undefined;
     const wrapLabel = <div style={{ fontSize: '24px' }}>{label}</div>;
     return (
         <>
@@ -48,6 +49,8 @@ export function NumberField(
                             },
                         }} // ラベルの設定
                         placeholder={example} // 入力例
+                        error={!!errorMessage}
+                        helperText={errorMessage}
                     />
                 )}
             />

@@ -1,5 +1,6 @@
+import { PlayerSchema } from "@/feature/player/schema/schema";
 import { TextField } from "@mui/material";
-import { Controller, useFormContext } from "react-hook-form";
+import { Controller, FieldErrors, useFormContext } from "react-hook-form";
 
 /**
  * 文字を入力するテキストボックスのプロップス
@@ -23,7 +24,8 @@ export function StringField(
     { name, label, example }: StringFieldProps
 ) {
 
-    const { control } = useFormContext();
+    const { control, formState:{errors} } = useFormContext();
+    const errorMessage = errors[name]?.message as string | undefined;
     const wrapLabel = <div style={{fontSize: '24px'}}>{label}</div>;
     return (
         <>
@@ -34,10 +36,13 @@ export function StringField(
                 <TextField
                     {...field}
                     label={wrapLabel}
+                    defaultValue={""}
                     fullWidth
                     margin="normal"
                     slotProps={{ inputLabel: { shrink: true } }}
                     placeholder={example}
+                    error={!!errorMessage}
+                    helperText={errorMessage}
                 />
             )}
         >

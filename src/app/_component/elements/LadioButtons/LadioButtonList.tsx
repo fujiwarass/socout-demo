@@ -1,4 +1,4 @@
-import { FormControl, FormControlLabel, FormLabel, Radio, RadioGroup } from "@mui/material";
+import { FormControl, FormControlLabel, FormHelperText, FormLabel, Radio, RadioGroup } from "@mui/material";
 import { Controller, useFormContext } from "react-hook-form";
 
 /**
@@ -20,7 +20,8 @@ interface LadioBoxListProps {
  */
 export function LadioBoxList({ name, position, label }: LadioBoxListProps) {
 
-    const { control } = useFormContext();
+    const { control, formState:{errors} } = useFormContext();
+    const errorMessage = errors[name]?.message as string | undefined;
 
     return (
         <>
@@ -28,8 +29,9 @@ export function LadioBoxList({ name, position, label }: LadioBoxListProps) {
                 name={name}
                 control={control}
                 render={({ field }) => (
-                    <FormControl>
-                        <FormLabel>{label}</FormLabel>
+                    <FormControl error={!!errorMessage}>
+                        <FormLabel
+                        >{label}</FormLabel>
                         <RadioGroup row>
                             {position.map((pos, index) => (
                                 <FormControlLabel
@@ -37,9 +39,11 @@ export function LadioBoxList({ name, position, label }: LadioBoxListProps) {
                                     key={index}
                                     value={pos}
                                     control={<Radio />}
-                                    label={pos} />
+                                    label={pos} 
+                                    />
                             ))}
                         </RadioGroup>
+                        <FormHelperText>{errorMessage}</FormHelperText>
                     </FormControl>
                 )} >
 

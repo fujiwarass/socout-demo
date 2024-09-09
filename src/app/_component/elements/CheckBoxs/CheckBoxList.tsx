@@ -1,4 +1,4 @@
-import { Checkbox, FormControl, FormControlLabel, FormGroup, FormLabel } from "@mui/material";
+import { Checkbox, FormControl, FormControlLabel, FormGroup, FormHelperText, FormLabel } from "@mui/material";
 import { Controller, useFormContext } from "react-hook-form";
 
 /**
@@ -21,7 +21,8 @@ interface CheckBoxListProps {
  */
 export function CheckBoxList({ name, position, label }: CheckBoxListProps) {
 
-    const { control } = useFormContext();
+    const { control, formState:{errors} } = useFormContext();
+    const errorMessage = errors[name]?.message as string | undefined;
 
     // チェックボックスの変更イベント
     const handleCheckboxChange = (pos: string, field: any) => (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -41,7 +42,7 @@ export function CheckBoxList({ name, position, label }: CheckBoxListProps) {
                 name={name}
                 control={control}
                 render={({ field }) => (
-                    <FormControl>
+                    <FormControl error={!!errorMessage}>
                         <FormLabel>{label}</FormLabel>
                         <FormGroup row>
                             {position.map((pos, index) => (
@@ -57,7 +58,7 @@ export function CheckBoxList({ name, position, label }: CheckBoxListProps) {
                             ))}
 
                         </FormGroup>
-
+                        <FormHelperText>{errorMessage}</FormHelperText>
                     </FormControl>
                 )}
             >
