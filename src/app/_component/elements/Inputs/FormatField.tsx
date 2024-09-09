@@ -1,29 +1,28 @@
 import { InputAdornment, TextField } from "@mui/material";
 import { Controller, useFormContext } from "react-hook-form";
-import { NumericFormat } from "react-number-format"
+import { NumericFormat, PatternFormat } from "react-number-format"
 /**
- * 文字を入力するテキストボックスのプロップス
+ * 数値を入力するテキストボックス
  */
-interface NumberFieldProps {
+interface FormatFieldProps {
     /**name属性 */
     name: string,
     /**ラベル名 */
     label: string,
     /**入力例 */
     example: string
-    /**単位 */
-    unit: string
+    /**フォーマット */
+    format: string
 }
 
 /**
  * 数値を入力するテキストボックス
- * @param name name属性
  * @param label ラベル名
  * @param example 入力例
- * @param unit 単位
+ * @param format フォーマット(#でパターン文字を定義)
  */
-export function NumberField(
-    { name, label, example, unit }: NumberFieldProps
+export function FormatField(
+    { name, label, example, format }: FormatFieldProps
 ) {
     const { control, formState:{errors} } = useFormContext();
     const errorMessage = errors[name]?.message as string | undefined;
@@ -34,26 +33,19 @@ export function NumberField(
                 name={name}
                 control={control}
                 render={({ field }) => (
-                    <NumericFormat
+                    <PatternFormat
                         {...field} // フィールド
-                        decimalScale={1} // 小数点以下の桁数
-                        decimalSeparator="." // 小数点の文字
-                        fixedDecimalScale // 小数点以下の桁数を固定
-                        allowNegative={false} // マイナス値の入力を許可
+                        format={format} // パターン
                         customInput={TextField} // テキストフィールドを指定
                         label={wrapLabel} // ラベル名
-                        slotProps={{
-                            inputLabel: { shrink: true },
-                            input: {
-                                endAdornment: <InputAdornment position="end">{unit}</InputAdornment>,
-                            },
-                        }} // ラベルの設定
+                        slotProps={{ inputLabel: { shrink: true }, }} // ラベルの設定
                         placeholder={example} // 入力例
                         error={!!errorMessage}
                         helperText={errorMessage}
                     />
                 )}
-            />
+            ></Controller>
+
         </>
     );
 }
