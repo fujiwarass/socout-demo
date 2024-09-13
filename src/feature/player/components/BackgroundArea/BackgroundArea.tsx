@@ -3,23 +3,34 @@ import { FormHeadLine } from "@/app/_component/elements/HeadLines/FormHeadLine";
 import { StringAreaField } from "@/app/_component/elements/Inputs/StringAreaField";
 import { StringField } from "@/app/_component/elements/Inputs/StringField";
 import { Stack } from "@mui/material";
+import { PlayerFormConst } from "../../const/PlayerFormConst";
 
 /** 経歴エリア */
 export function BackgroundArea() {
+    const { BackgroundArea } = PlayerFormConst;
     return (
         <>
             <Stack direction="column" spacing={4}>
 
-                    <FormHeadLine title="経歴" />
+                    <FormHeadLine title={BackgroundArea.groupTitle} />
 
                     <FormChip mustFlg={true} />
-                    <StringField name={"team"} label="現所属チーム" example="例：～所属" />
+                    <StringField 
+                        name={BackgroundArea.team.name} 
+                        label={BackgroundArea.team.label} 
+                        example="例：～所属" />
 
                     <FormChip mustFlg={true} />
-                    <StringAreaField name={"pastTeam"}  label="過去所属チーム" example="例： XXXX年YY月~XXXX年YY月 ～所属" />
+                    <StringAreaField 
+                        name={BackgroundArea.pastTeam.name} 
+                        label={BackgroundArea.pastTeam.label}  
+                        example="例： XXXX年YY月~XXXX年YY月 ～所属" />
 
                     <FormChip mustFlg={true} />
-                    <StringAreaField name={"selectionHistory"}  label="選抜歴" example="例： XXXX年YY月~XXXX年YY月 ～選抜選出" />
+                    <StringAreaField 
+                        name={BackgroundArea.selectionHistory.name}  
+                        label={BackgroundArea.selectionHistory.name} 
+                        example="例： XXXX年YY月~XXXX年YY月 ～選抜選出" />
             </Stack>
         </>
     );
