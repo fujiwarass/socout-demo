@@ -29,7 +29,7 @@ export function BackgroundArea() {
                     <FormChip mustFlg={true} />
                     <StringAreaField 
                         name={BackgroundArea.selectionHistory.name}  
-                        label={BackgroundArea.selectionHistory.name} 
+                        label={BackgroundArea.selectionHistory.label} 
                         example="例： XXXX年YY月~XXXX年YY月 ～選抜選出" />
             </Stack>
         </>
