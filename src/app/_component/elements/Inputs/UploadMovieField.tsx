@@ -8,13 +8,18 @@ import { useRef, useState } from "react";
 interface UploadMovieFeildProps {
     /**ボタン名 */
     buttonName: string
+    /**画像タイトル */
+    movieTitle: string
+    /**高さ */
+    height: number
+    /**幅 */
+    width: number
 }
 
 /**
  * 動画をアップロードするフィールド
  */
-export function UploadMovieFeild({ buttonName }: UploadMovieFeildProps) {
-    const width = 250;
+export function UploadMovieFeild({ buttonName , movieTitle, height, width}: UploadMovieFeildProps) {
     //1,Refを作成
     const videoInputRef = useRef<HTMLInputElement>(null);
 
@@ -55,13 +60,25 @@ export function UploadMovieFeild({ buttonName }: UploadMovieFeildProps) {
     return (
         <>
             <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            <Box sx={{ 
+                     height: height,
+                     width: width,
+                     display: videoSrc === "" ? "flex" : "none",
+                     backgroundColor: 'lightgray',
+                     border: '1px dashed skyblue',
+                     justifyContent: 'center',
+                     alignItems: 'center',
+                     textAlign: 'center',
+                     }}>
+                    {movieTitle}
+                </Box>
                 <Box sx={{ 
                     display: videoSrc === "" ? "none" : "flex",
                     flexDirection: 'column'
                     }}>
                     <video
                         src={videoSrc}
-                        height={250}
+                        height={height}
                         width={width}
                         ref={videoRef}
                     >

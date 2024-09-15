@@ -8,12 +8,18 @@ import { useRef, useState } from "react";
 interface UploadImageFeildProps {
     /**ボタン名 */
     buttonName: string
+    /**画像タイトル */
+    imageTitle: string
+    /**高さ */
+    height: number
+    /**幅 */
+    width: number
 }
 
 /**
  * 画像をアップロードするフィールド
  */
-export function UploadImageFeild({ buttonName }: UploadImageFeildProps) {
+export function UploadImageFeild({ buttonName , imageTitle, height, width}: UploadImageFeildProps) {
     //1,Refを作成
     const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -44,14 +50,26 @@ export function UploadImageFeild({ buttonName }: UploadImageFeildProps) {
                 alignItems: 'center', 
                 
                 }}>
+                <Box sx={{ 
+                     height: height,
+                     width: width,
+                     display: imageSrc === "" ? "flex" : "none",
+                     backgroundColor: 'lightgray',
+                     border: '1px dashed skyblue',
+                     justifyContent: 'center',
+                     alignItems: 'center',
+                     textAlign: 'center',
+                     }}>
+                    {imageTitle}
+                </Box>
                 <Image
                     src={imageSrc}
-                    height={250}
-                    width={250}
+                    height={height}
+                    width={width}
                     alt="plofile image"
                     style={{ display:  imageSrc === "" ? "none" : "block",border: '1px solid skyblue', }}
                 />
-                <Button variant="contained" onClick={handleButtonClick} sx={{width: '250px'}}>
+                <Button variant="contained" onClick={handleButtonClick} sx={{width: width}}>
                     {buttonName}
                 </Button>
                 <TextField

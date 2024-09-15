@@ -27,6 +27,7 @@ export default function Page() {
 
                 <Stack direction="row" spacing={2}>
                     <ClientButton buttonName="修正する" path="/player/create" />
+                    <ClientButton buttonName="登録する" path="/player/create/media" />
                 </Stack>
             </Stack>
         </>
