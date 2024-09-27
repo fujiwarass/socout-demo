@@ -9,6 +9,7 @@ import { DisplayImage } from "@/app/_component/elements/Field/DisplayImage";
 import { FormHeadLine } from "@/app/_component/elements/HeadLines/FormHeadLine";
 import { ClientButton } from "@/app/_component/elements/Buttons/ClientButton";
 
+/**選手プロフィール画面 */
 export default function Page() {
     const [player, setPlayer] = useState<Player | null>(null);
 

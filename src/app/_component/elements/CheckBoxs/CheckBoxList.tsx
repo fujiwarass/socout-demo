@@ -16,7 +16,7 @@ interface CheckBoxListProps {
 /**
  * チェックボックス一覧
  * @param name name属性
- * @param position ポジション
+ * @param position チェック一覧
  * @param label ラベル名
  */
 export function CheckBoxList({ name, position, label }: CheckBoxListProps) {
@@ -44,6 +44,7 @@ export function CheckBoxList({ name, position, label }: CheckBoxListProps) {
                 render={({ field }) => (
                     <FormControl error={!!errorMessage}>
                         <FormLabel>{label}</FormLabel>
+                        {/* プロップスから受け取ったチェック一覧をチェックボックスとして展開する */}
                         <FormGroup row>
                             {position.map((pos, index) => (
                                 <FormControlLabel {...field}
@@ -51,7 +52,7 @@ export function CheckBoxList({ name, position, label }: CheckBoxListProps) {
                                     control={
                                         <Checkbox
                                             checked={Array.isArray(field.value) && field.value.includes(pos)} // チェックされているか(配列の場合は含まれているか)
-                                            onChange={handleCheckboxChange(pos, field)}
+                                            onChange={handleCheckboxChange(pos, field)} // チェックボックスの変更イベント
                                         />
                                     }
                                     label={pos} />

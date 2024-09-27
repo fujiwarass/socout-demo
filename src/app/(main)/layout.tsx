@@ -3,7 +3,6 @@ import { Inter } from "next/font/google";
 import { Header } from "../_component/mainLayout/Header";
 import { Box } from "@mui/material";
 
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "サカウト_選手",

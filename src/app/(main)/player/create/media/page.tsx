@@ -6,6 +6,7 @@ import { UploadImageFeild } from "@/app/_component/elements/Inputs/UploadImageFe
 import { UploadMovieFeild } from "@/app/_component/elements/Inputs/UploadMovieField";
 import { Stack } from "@mui/material";
 
+/**選手プロフィールアップロード画面 */
 export default function Page() {
 
     const heigth: number = 250;

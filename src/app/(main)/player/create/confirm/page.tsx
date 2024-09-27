@@ -6,10 +6,11 @@ import { CheckTable } from "@/app/_component/elements/Tables/CheckTable";
 import { CheckTableType } from "@/app/_component/elements/Tables/types/CheckTableType";
 import { PlayerSchema } from "@/feature/player/schema/schema";
 import { getPlayerCheckForm } from "@/feature/player/utils/getPlayerCheckForm";
-import { Box, Stack } from "@mui/material";
+import { Stack } from "@mui/material";
 import React from "react";
 import { useFormContext } from "react-hook-form";
 
+/**選手プロフィール登録確認画面 */
 export default function Page() {
     const { getValues } = useFormContext();
     const values = getValues() as PlayerSchema;

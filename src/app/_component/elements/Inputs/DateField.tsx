@@ -31,11 +31,13 @@ export function DateField(
                     <TextField
                         {...field}
                         label={wrapLabel}
-                        type='date'
+                        type='date' // 日付入力
                         margin="normal"
-                        slotProps={{ inputLabel: { shrink: true } }} 
-                        error={!!errorMessage}
-                        helperText={errorMessage}
+                        slotProps={{ 
+                            inputLabel: { shrink: true } // ラベルの設定 
+                        }}
+                        error={!!errorMessage} // エラーがある場合はtrue
+                        helperText={errorMessage} // エラーメッセージ
                         >
                     </TextField>
                 )}
