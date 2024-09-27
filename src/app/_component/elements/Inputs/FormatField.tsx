@@ -17,6 +17,7 @@ interface FormatFieldProps {
 
 /**
  * 数値を入力するテキストボックス
+ * @param name name属性
  * @param label ラベル名
  * @param example 入力例
  * @param format フォーマット(#でパターン文字を定義)
@@ -40,8 +41,8 @@ export function FormatField(
                         label={wrapLabel} // ラベル名
                         slotProps={{ inputLabel: { shrink: true }, }} // ラベルの設定
                         placeholder={example} // 入力例
-                        error={!!errorMessage}
-                        helperText={errorMessage}
+                        error={!!errorMessage} // エラーがある場合はtrue
+                        helperText={errorMessage} // エラーメッセージ
                     />
                 )}
             ></Controller>

@@ -18,7 +18,7 @@ export function FormHeadLine({ title }: FormHeadLineProps) {
         <>
             <Typography
                 variant="h5"
-                style={{
+                style={{ // 見出しのスタイル
                     color: 'black',
                     borderBottom: '3px solid skyblue',
                     paddingTop: '16px',

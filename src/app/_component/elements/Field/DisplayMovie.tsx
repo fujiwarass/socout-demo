@@ -2,6 +2,9 @@ import { Player } from "@/feature/player/types/Player";
 import { Box, Button } from "@mui/material";
 import { useRef, useState } from "react";
 
+/**
+ * 動画表示コンポーネントProps
+ */
 interface DisplayMovieProps {
     /**高さ */
     height: number,
@@ -9,6 +12,12 @@ interface DisplayMovieProps {
     player: Player | null
 }
 
+/**
+ * 動画表示用コンポーネント
+ * @param player プレイヤー情報
+ * @param height 高さ
+ * @returns 
+ */
 export function DisplayMovie({ height, player }: DisplayMovieProps) {
     const videoSrc = player?.play_video_url === "" ? "" : player?.play_video_url;
 

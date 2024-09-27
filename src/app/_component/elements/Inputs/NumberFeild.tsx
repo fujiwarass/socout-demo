@@ -43,14 +43,14 @@ export function NumberField(
                         customInput={TextField} // テキストフィールドを指定
                         label={wrapLabel} // ラベル名
                         slotProps={{
-                            inputLabel: { shrink: true },
-                            input: {
-                                endAdornment: <InputAdornment position="end">{unit}</InputAdornment>,
+                            inputLabel: { shrink: true }, // ラベルの設定
+                            input: { // 入力欄の設定
+                                endAdornment: <InputAdornment position="end">{unit}</InputAdornment>, // 単位
                             },
-                        }} // ラベルの設定
+                        }}
                         placeholder={example} // 入力例
-                        error={!!errorMessage}
-                        helperText={errorMessage}
+                        error={!!errorMessage} // エラーがある場合はtrue
+                        helperText={errorMessage} // エラーメッセージ
                     />
                 )}
             />

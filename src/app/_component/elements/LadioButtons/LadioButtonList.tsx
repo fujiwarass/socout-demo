@@ -30,8 +30,8 @@ export function LadioBoxList({ name, position, label }: LadioBoxListProps) {
                 control={control}
                 render={({ field }) => (
                     <FormControl error={!!errorMessage}>
-                        <FormLabel
-                        >{label}</FormLabel>
+                        <FormLabel>{label}</FormLabel>
+                        {/* プロップスから受け取った選択一覧をラジオボタンとして展開する */}
                         <RadioGroup row>
                             {position.map((pos, index) => (
                                 <FormControlLabel

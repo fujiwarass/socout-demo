@@ -2,8 +2,8 @@ import { Player } from "@/feature/player/types/Player";
 
 export const PlayerJson: Player = {
     "user_id": "1",
-    "player_first_name": "木戸口",
-    "player_last_name": "蒼汰",
+    "player_first_name": "山田",
+    "player_last_name": "太郎",
     "generation": "U-18",
     "birth_date": "2001-01-01",
     "age": 20,
@@ -22,6 +22,6 @@ export const PlayerJson: Player = {
     "father_height": 180.2,
     "mother_height": 160.2,
     "parents_sports_history": "父は野球、母はバスケットボールをしていました。",
-    "profile_picture_url": "",
-    "play_video_url": ""
+    "profile_picture_url": "/demo/usagi.jpg",
+    "play_video_url": "/demo/sample.mp4"
 }
