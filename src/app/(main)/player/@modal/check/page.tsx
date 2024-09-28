@@ -7,12 +7,14 @@ import { CheckModal } from '@/app/_component/elements/Modals/CheckModal';
  * @returns 
  */
 export default function Page() {
-    const okEvent = () => {
+    const okEvent = async () => {
         console.log("OK")
     }
     return (
         <>
-            <CheckModal title='sammple' content='aaaa' okEvent={okEvent}/>  
+            <CheckModal title='確認' okEvent={okEvent}>
+                <div style={{ textAlign: 'center' }}>変更内容を反映してもよろしいでしょうか</div>
+            </CheckModal>
         </>
     );
 }
