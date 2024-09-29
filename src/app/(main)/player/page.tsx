@@ -1,3 +1,5 @@
+'use client'
+
 import { Stack } from "@mui/material";
 import * as PlayerDisp from '@/feature/player/components/Index';
 import { DisplayMovie } from "@/app/_component/elements/Field/DisplayMovie";
@@ -5,21 +7,29 @@ import { DisplayImage } from "@/app/_component/elements/Field/DisplayImage";
 import { FormHeadLine } from "@/app/_component/elements/HeadLines/FormHeadLine";
 import { ClientButton } from "@/app/_component/elements/Buttons/ClientButton";
 import { Player } from "@/feature/player/types/Player";
+import { useEffect, useState } from "react";
+import { useGetPlayerProfile } from "@/feature/player/hooks/useGetPlayerProfile";
 
 /**選手プロフィール画面 */
-export default async function Page() {
+export default  function Page() {
     
     // TO DO 何かしらの方法でユーザーIDを取得する
-    const user_id = 'bbb';
-    const res = await fetch(`http://localhost:3000/api/v1/player-profile?user_id=${user_id}`
-        , {
-            method: 'GET',
-            headers: {
-                'Cache-Control': 'no-cache',
-              },
-        }
-    );
-    const player = await res.json() as Player;
+    const user_id = 'aaa';
+
+    /**
+       TO DO フェッチで取得する予定
+       const res = await fetch(`http://localhost:3000/api/v1/player-profile?user_id=${user_id}`
+           , {
+               method: 'GET',
+               headers: {
+                   'Cache-Control': 'no-cache',
+                 },
+           }
+       );
+       const player = await res.json() as Player;
+     */
+    
+     const { player } = useGetPlayerProfile(user_id);
 
     return (
         <>        
