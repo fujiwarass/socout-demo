@@ -1,3 +1,5 @@
+'use client'
+
 import { Player } from "@/feature/player/types/Player";
 import { Box, Button } from "@mui/material";
 import { useRef, useState } from "react";
